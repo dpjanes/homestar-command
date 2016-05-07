@@ -1,0 +1,35 @@
+{
+    "author": "David P. Janes <davidjanes@iotdb.org> (https://iotdb.org)", 
+    "bugs": {
+        "url": "https://github.com/dpjanes/homestar-command/issues"
+    }, 
+    "dependencies": {
+        "iotdb": ">=0.14.0"
+    }, 
+    "description": "HomeStar / IOTDB Bridge for Command", 
+    "devDependencies": {
+        "grunt": "~1.0.1", 
+        "grunt-contrib-jshint": "~1.0.0", 
+        "grunt-contrib-nodeunit": "~1.0.0", 
+        "grunt-contrib-uglify": "~1.0.1", 
+        "grunt-contrib-watch": "~1.0.0", 
+        "grunt-jsbeautifier": "~0.2.12", 
+        "jshint-stylish": "~2.2.0", 
+        "load-grunt-tasks": "~3.5.0", 
+        "request": "~2.72.0"
+    }, 
+    "homepage": "https://homestar.io", 
+    "homestar": {}, 
+    "license": "Apache-2.0", 
+    "main": "index.js", 
+    "name": "homestar-command", 
+    "private": false, 
+    "repository": {
+        "type": "git", 
+        "url": "https://github.com/dpjanes/homestar-command"
+    }, 
+    "scripts": {
+        "test": "grunt"
+    }, 
+    "version": "0.0.0"
+}

@@ -25,6 +25,8 @@
 const iotdb = require('iotdb');
 const _ = iotdb._;
 
+const child_process = require('child_process');
+
 const logger = iotdb.logger({
     name: 'homestar-command',
     module: 'CommandBridge',
@@ -136,8 +138,17 @@ CommandBridge.prototype.push = function (pushd, done) {
         pushd: pushd
     }, "push");
 
+    if (self.initd.command) {
+        self.initd.command(pushd);
+    } else if (self.initd.shell) {
+        child_process.exec(self.initd.shell, (error, stdout, stderr) => {
+            console.log(stdout);
+        });
+    }
+
     // see what we did here?
     self.pulled(pushd);
+    done();
 };
 
 /**

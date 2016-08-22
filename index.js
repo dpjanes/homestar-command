@@ -25,6 +25,8 @@
 exports.Bridge = require('./CommandBridge').Bridge;
 exports.bindings = [
     require('./models/Command').binding,
+    require('./models/CommandOn').binding,
+    require('./models/CommandOff').binding,
 ];
 
 exports.iotdb = require("iotdb");

@@ -1,7 +1,7 @@
 {
   "@context": {
-    "@base": "file:///command",
-    "@vocab": "file:///command#",
+    "@base": "file:///command-off",
+    "@vocab": "file:///command-off#",
     "iot": "https://iotdb.org/pub/iot#",
     "iot-purpose": "https://iotdb.org/pub/iot-purpose#",
     "iot:purpose": {
@@ -18,10 +18,10 @@
   "@type": "iot:Model",
   "iot:attribute": [
     {
-      "@id": "#command",
+      "@id": "#off",
       "@type": "iot:Attribute",
       "iot:actuator": true,
-      "iot:purpose": "iot-purpose:command",
+      "iot:purpose": "iot-purpose:on.false",
       "iot:read": false,
       "iot:sensor": false,
       "iot:type": "iot:type.null",
@@ -29,7 +29,6 @@
       "schema:name": "command"
     }
   ],
-  "iot:model-id": "command",
-  "schema:description": "Command",
-  "schema:name": "Command"
+  "iot:model-id": "command-off",
+  "schema:name": "Command Off"
 }

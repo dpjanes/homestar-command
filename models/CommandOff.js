@@ -1,5 +1,5 @@
 /*
- *  Command.js
+ *  CommandOff.js
  *
  *  David Janes
  *  IOTDB
@@ -10,5 +10,5 @@ var iotdb = require("iotdb");
 
 exports.binding = {
     bridge: require('../CommandBridge').Bridge,
-    model: require('./command.json'),
+    model: require('./command-off.json'),
 };

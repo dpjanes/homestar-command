@@ -1,7 +1,7 @@
 {
   "@context": {
-    "@base": "file:///command",
-    "@vocab": "file:///command#",
+    "@base": "file:///command-on",
+    "@vocab": "file:///command-on#",
     "iot": "https://iotdb.org/pub/iot#",
     "iot-purpose": "https://iotdb.org/pub/iot-purpose#",
     "iot:purpose": {
@@ -18,10 +18,10 @@
   "@type": "iot:Model",
   "iot:attribute": [
     {
-      "@id": "#command",
+      "@id": "#on",
       "@type": "iot:Attribute",
       "iot:actuator": true,
-      "iot:purpose": "iot-purpose:command",
+      "iot:purpose": "iot-purpose:on.true",
       "iot:read": false,
       "iot:sensor": false,
       "iot:type": "iot:type.null",
@@ -29,7 +29,6 @@
       "schema:name": "command"
     }
   ],
-  "iot:model-id": "command",
-  "schema:description": "Command",
-  "schema:name": "Command"
+  "iot:model-id": "command-on",
+  "schema:name": "Command On"
 }

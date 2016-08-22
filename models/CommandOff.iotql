@@ -1,12 +1,11 @@
 --
 --  compile to JSON with 'iotql-model Command.iotql'
 --
-CREATE MODEL Command WITH
-    schema:name = "Command",
-    schema:description = "Command"
-ATTRIBUTE command WITH
+CREATE MODEL CommandOff WITH
+    schema:name = "Command Off"
+ATTRIBUTE off WITH
     schema:name = "command",
-    iot:purpose = iot-purpose:command,
+    iot:purpose = iot-purpose:on.false,
     iot:type = iot:type.null,
     iot:write = true,
     iot:read = false,

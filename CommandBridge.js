@@ -41,13 +41,20 @@ const CommandBridge = function (initd, native) {
 
     self.initd = _.defaults(initd,
         iotdb.keystore().get("bridges/CommandBridge/initd"), {
-            poll: 30
+            name: null,
+            uuid: null,
         }
     );
     self.native = native;   // the thing that does the work - keep this name
 
     if (self.native) {
-        self.queue = _.queue("CommandBridge");
+        if (!self.initd.uuid) {
+            logger.error({
+                method: "CommandBridge",
+                initd: self.initd,
+                cause: "caller should initialize with an 'uuid', used to uniquely identify things over sessions",
+            }, "missing initd.uuid - problematic");
+        }
     }
 };
 
@@ -69,16 +76,7 @@ CommandBridge.prototype.discover = function () {
         method: "discover"
     }, "called");
 
-    /*
-     *  This is the core bit of discovery. As you find new
-     *  thimgs, make a new CommandBridge and call 'discovered'.
-     *  The first argument should be self.initd, the second
-     *  the thing that you do work with
-     */
-    const s = self._command();
-    s.on('something', function (native) {
-        self.discovered(new CommandBridge(self.initd, native));
-    });
+    self.discovered(new CommandBridge(self.initd, {}));
 };
 
 /**
@@ -91,25 +89,6 @@ CommandBridge.prototype.connect = function (connectd) {
     }
 
     self._validate_connect(connectd);
-
-    self._setup_polling();
-    self.pull();
-};
-
-CommandBridge.prototype._setup_polling = function () {
-    const self = this;
-    if (!self.initd.poll) {
-        return;
-    }
-
-    const timer = setInterval(function () {
-        if (!self.native) {
-            clearInterval(timer);
-            return;
-        }
-
-        self.pull();
-    }, self.initd.poll * 1000);
 };
 
 CommandBridge.prototype._forget = function () {
@@ -152,32 +131,13 @@ CommandBridge.prototype.push = function (pushd, done) {
 
     self._validate_push(pushd, done);
 
-    logger.info({
+    logger.warn({
         method: "push",
         pushd: pushd
     }, "push");
 
-    const qitem = {
-        // if you set "id", new pushes will unqueue old pushes with the same id
-        // id: self.number, 
-        run: function () {
-            self._pushd(pushd);
-            self.queue.finished(qitem);
-        },
-        coda: function() {
-            done();
-        },
-    };
-    self.queue.add(qitem);
-};
-
-/**
- *  Do the work of pushing. If you don't need queueing
- *  consider just moving this up into push
- */
-CommandBridge.prototype._push = function (pushd) {
-    if (pushd.on !== undefined) {
-    }
+    // see what we did here?
+    self.pulled(pushd);
 };
 
 /**
@@ -202,11 +162,11 @@ CommandBridge.prototype.meta = function () {
     }
 
     return {
-        "iot:thing-id": _.id.thing_urn.unique("Command", self.native.uuid, self.initd.number),
+        "iot:thing-id": _.id.thing_urn.unique("Command", self.initd.uuid),
         "schema:name": self.native.name || "Command",
 
         // "iot:thing-number": self.initd.number,
-        // "iot:device-id": _.id.thing_urn.unique("Command", self.native.uuid),
+        // "iot:device-id": _.id.thing_urn.unique("Command", self.initd.uuid),
         // "schema:manufacturer": "",
         // "schema:model": "",
     };

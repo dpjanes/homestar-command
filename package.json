@@ -6,7 +6,7 @@
     "dependencies": {
         "iotdb": ">=0.14.0"
     }, 
-    "description": "HomeStar / IOTDB Bridge for Command", 
+    "description": "IOTDB Bridge for Node.JS code", 
     "devDependencies": {
         "grunt": "~1.0.1", 
         "grunt-contrib-jshint": "~1.0.0", 

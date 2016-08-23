@@ -6,7 +6,6 @@
 #   2016-05-07
 #
 
-exit 0
 PACKAGE=homestar-command
 DIST_ROOT=/var/tmp/.dist.$$
 

@@ -6,7 +6,8 @@ CREATE MODEL CommandOff WITH
 ATTRIBUTE off WITH
     schema:name = "command",
     iot:purpose = iot-purpose:on.false,
-    iot:type = iot:type.null,
+    iot:type = iot:type.string,
+    iot:instantaneous = true,
     iot:write = true,
     iot:read = false,
     iot:actuator = true,

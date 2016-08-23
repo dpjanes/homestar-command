@@ -6,7 +6,8 @@ CREATE MODEL CommandOn WITH
 ATTRIBUTE on WITH
     schema:name = "command",
     iot:purpose = iot-purpose:on.true,
-    iot:type = iot:type.null,
+    iot:type = iot:type.string,
+    iot:instantaneous = true,
     iot:write = true,
     iot:read = false,
     iot:actuator = true,

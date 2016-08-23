@@ -24,7 +24,8 @@
       "iot:purpose": "iot-purpose:on.true",
       "iot:read": false,
       "iot:sensor": false,
-      "iot:type": "iot:type.null",
+      "iot:type": "iot:type.string",
+      "iot:instantaneous": true,
       "iot:write": true,
       "schema:name": "command"
     }

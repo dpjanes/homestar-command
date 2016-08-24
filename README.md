@@ -7,6 +7,8 @@ This will run code or shell commands.
 At this point, we're only doing output but we may
 modify so you can run commands and get the output
 
+* [Read about Bridges](https://github.com/dpjanes/node-iotdb/blob/master/docs/bridges.md)
+
 # Installation
 
 * [Read this first](https://github.com/dpjanes/node-iotdb/blob/master/docs/install.md)

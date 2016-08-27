@@ -21,11 +21,11 @@
       "@id": "#on",
       "@type": "iot:Attribute",
       "iot:actuator": true,
+      "iot:instantaneous": true,
       "iot:purpose": "iot-purpose:on.true",
       "iot:read": false,
       "iot:sensor": false,
       "iot:type": "iot:type.string",
-      "iot:instantaneous": true,
       "iot:write": true,
       "schema:name": "command"
     }

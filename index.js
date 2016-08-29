@@ -28,3 +28,5 @@ exports.bindings = [
     require('./models/CommandOn').binding,
     require('./models/CommandOff').binding,
 ];
+
+exports.module_folder = __dirname;

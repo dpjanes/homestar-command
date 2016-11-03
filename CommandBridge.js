@@ -62,10 +62,6 @@ const CommandBridge = function (initd, native) {
 
 CommandBridge.prototype = new iotdb.Bridge();
 
-CommandBridge.prototype.name = function () {
-    return "CommandBridge";
-};
-
 /* --- lifecycle --- */
 
 /**
